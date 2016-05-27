@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {ControlGroup, FormBuilder} from "@angular/common";
 
 @Component({
   moduleId: module.id,
@@ -7,5 +8,19 @@ import { Component } from '@angular/core';
   styleUrls: ['bind-data-only-if-form-is-submitted.component.css']
 })
 export class BindDataOnlyIfFormIsSubmittedAppComponent {
-  title = 'bind-data-only-if-form-is-submitted works!';
+  title = 'Angular2 bind data only if form is submitted';
+
+  myForm:ControlGroup;
+  originalUserName:string;
+
+  constructor(private _formBuilder:FormBuilder) {
+    this.originalUserName = 'abc';
+    this.myForm = _formBuilder.group({
+      userName: [this.originalUserName]
+    });
+  }
+
+  onSubmit(form) {
+    this.originalUserName = this.myForm.controls['userName'].value;
+  }
 }

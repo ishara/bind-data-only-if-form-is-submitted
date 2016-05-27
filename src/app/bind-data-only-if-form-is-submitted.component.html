@@ -1,3 +1,11 @@
-<h1>
-  {{title}}
-</h1>
+<h3>{{title}}</h3>
+<form [ngFormModel]='myForm' (ngSubmit)="onSubmit()">
+  <input type="text" [ngFormControl]="myForm.controls['userName']" />
+  <button type="submit">Submit</button>
+  <button>Cancel</button>
+</form>
+<br>userName : {{originalUserName}}
+
+<br>
+<a href="https://se-tech-tips.blogspot.com/2016/05/angular2-bind-data-only-if-form-is.html">Blog post </a>
+
